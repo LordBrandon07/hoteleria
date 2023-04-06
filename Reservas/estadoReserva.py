@@ -9,14 +9,13 @@ class EstadoReserva:
         self.estado = estado
 
     def getEstado (self):
-        return self.__id
+        return self.__id, self.estado
 
     def setEstado (self,id):
         self.__id = id
         
     def listaEstados(self,num):
         lista=[]
-        cursor=con.cursor()
         sql="SELECT est_id FROM estado_reserva"
         est=cursor.execute(sql).fetchall()
         for i in est:

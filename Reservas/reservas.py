@@ -1,5 +1,5 @@
 import sqlite3
-import estadoReserva
+from estadoReserva import *
 
 with sqlite3.connect('C://Users//gveje//Desktop//DIEGO//ADSO//SQLite//kratosbase.db')as con:
     cursor=con.cursor()
@@ -16,7 +16,7 @@ class Reservas:
         self.cant_dias = cant_dias
         self.valor = valor
         self.__usu_id = usu_id
-        self.est_id = listaEstados()
+        self.est_id = "A025"
 
     def getReserva(self):
         return self.__id, self.fecha,self.cant_hab,self.cant_adultos,self.cant_ninos,self.fe_inicio,self.fe_fin,self.cant_dias,self.valor,self.__usu_id,self.est_id
@@ -25,8 +25,9 @@ class Reservas:
         self.__id = id
 
     def guardarReserva(self,res):
-        cursor=con.cursor()
         sql=f"INSERT INTO reserva VALUES ('{res[0]}','{res[1]}',{res[2]},{res[3]},{res[4]},'{res[5]}','{res[6]}',{res[7]},{res[8]},{res[9]},'{res[10]}');"
         cursor.execute(sql)
         con.commit()
         print('Reserva creada')
+        
+    

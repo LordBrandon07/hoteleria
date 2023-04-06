@@ -1,8 +1,12 @@
 from reservas import *
 from datetime import *
+import sqlite3
 #from habitaciones import *
 
-def capReserva():
+with sqlite3.connect('C://Users//gveje//Desktop//DIEGO//ADSO//SQLite//kratosbase.db')as con:
+    cursor=con.cursor()
+
+def captura_reserva():
     id=input("Digite codigo de reserva:\n")
     fecha=date.today()
     cant_hab=int(input("Cuantas habitaciones desea reservar:\n"))
@@ -19,5 +23,18 @@ def capReserva():
     nw=Reservas(id, fecha, cant_hab, cant_adultos, cant_ninos, fe_inicio, fe_fin, cant_dias, valor, usu_id)
     nw.guardarReserva(nw.getReserva())
     
-
-capReserva()
+def borrar_reserva():
+    id=input("Digite ID de la reserva a eliminar")
+    sql=f"DELETE FROM reserva WHERE res_id == '{id}'"
+    cursor.execute(sql)
+    con.commit()
+    print("Reserva Eliminada Correctamente")
+    
+def consultar_reserva():
+    cont=1
+    sql=f"SELECT * FROM reserva"
+    consulta=cursor.execute(sql).fetchall()
+    for i in consulta:
+        print(f"{cont} - {i[0]}  {i[1]}  {i[2]}  {i[3]}  {i[4]}  {i[5]}  {i[6]}  {i[7]}  {i[8]}  {i[9]}  {i[10]}")
+        cont+=1
+        
