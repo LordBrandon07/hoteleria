@@ -1,34 +1,35 @@
 from servicio_app import*
 
-while True:
+def menuadicional():
+    while True:
 
-    print('''
-    1- Crear un servicio adicional
-    2- Eliminar un servicio adicional
-    3- Modificar un servicio adicional
-    4- seleccionar un servicio adicional
-    0- Inicio
-''')
+        print('''
+        1- Crear un servicio adicional
+        2- Eliminar un servicio adicional
+        3- Modificar un servicio adicional
+        4- seleccionar un servicio adicional
+        0- Inicio
+    ''')
 
-    seleccion =int(input("seleccionar: "))
-    if seleccion == 1:
+        seleccion =int(input("seleccionar: "))
+        if seleccion == 1:
 
-        crearadicional()
+            crearadicional()
 
-    if seleccion == 2:
+        if seleccion == 2:
 
-        eliminaradicional()
-        
-    if seleccion == 3:
+            eliminaradicional()
+            
+        if seleccion == 3:
 
-        modadicional()
+            modadicional()
 
-    if seleccion == 4:
+        if seleccion == 4:
 
-        selcadicional()
+            selcadicional()
 
-    if seleccion == 0:
-        exit()
+        if seleccion == 0:
+            exit()
     
 print(seleccion)
     
