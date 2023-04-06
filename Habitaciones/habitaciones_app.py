@@ -1,8 +1,5 @@
 from habitaciones import *
 
-with sqlite3.connect('D:\\DonBrandon\\Tarea\\Adso\\visual\\hoteleria\\kratosbase.db')as pepe:
-    micursor=pepe.cursor()
-
 def capturarHabitaciones():
     hab_numero = int(input('ingrese un numero de habitacion: '))
     hab_disponible = str(input('ingrese si la habitacion esta disponible: '))
@@ -15,17 +12,29 @@ def capturarHabitaciones():
 
 def eliminarHabitaciones():
     hab_numero = int(input('ingrese un numero de habitacion: '))
-    micursor=pepe.cursor()
     sentencia = f"DELETE FROM HABITACION WHERE hab_numero={hab_numero}"
     micursor.execute(sentencia)
     pepe.commit()
     print('caremonda1')
 
 def selectHabitacion():
-    pass
+    hab_numero = int(input('ingrese un numero de habitacion: '))
+    sentencia = f"SELECT * FROM HABITACION WHERE hab_numero={hab_numero}"
+    m = micursor.execute(sentencia).fetchall()
+    for i in m:
+        print(f'{i[0]}, {i[1]}, {i[2]}, {i[3]}, {i[4]},')
+    print('caremonda2')
 
 def modificarHabitacion():
-    pass
+    campo = input('ingresar campo: ')
+    dato = input('ingresar dato: ')
+    hab_numero = int(input('ingrese un numero de habitacion: '))    
+    sentencia = f"UPDATE HABITACION SET {campo} = '{dato}' WHERE hab_numero={hab_numero} "
+    micursor.execute(sentencia)
+    pepe.commit()
+    print('caremonda3')
     
-eliminarHabitaciones()
+
+
+
 
