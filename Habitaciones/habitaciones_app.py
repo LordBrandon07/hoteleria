@@ -15,7 +15,7 @@ def eliminarHabitaciones():
     sentencia = f"DELETE FROM HABITACION WHERE hab_numero={hab_numero}"
     micursor.execute(sentencia)
     pepe.commit()
-    print('caremonda1')
+    print('Accion satisfactoria')
 
 def selectHabitacion():
     hab_numero = int(input('ingrese un numero de habitacion: '))
@@ -23,7 +23,7 @@ def selectHabitacion():
     m = micursor.execute(sentencia).fetchall()
     for i in m:
         print(f'{i[0]}, {i[1]}, {i[2]}, {i[3]}, {i[4]},')
-    print('caremonda2')
+    print('Accion satisfactoria')
 
 def modificarHabitacion():
     campo = input('ingresar campo: ')
@@ -32,7 +32,7 @@ def modificarHabitacion():
     sentencia = f"UPDATE HABITACION SET {campo} = '{dato}' WHERE hab_numero={hab_numero} "
     micursor.execute(sentencia)
     pepe.commit()
-    print('caremonda3')
+    print('Accion satisfactoria')
     
 
 

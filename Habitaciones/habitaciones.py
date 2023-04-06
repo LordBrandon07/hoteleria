@@ -34,4 +34,4 @@ class Habitaciones:
         sentencia = f"INSERT INTO HABITACION VALUES ({hab[0]}, '{hab[1]}', '{hab[2]}', {hab[3]}, {hab[4]})"
         micursor.execute(sentencia)
         pepe.commit()
-        print('caremonda')
+        print('Accion satisfactoria')
