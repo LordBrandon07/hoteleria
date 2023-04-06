@@ -28,6 +28,6 @@ class Reservas:
         sql=f"INSERT INTO reserva VALUES ('{res[0]}','{res[1]}',{res[2]},{res[3]},{res[4]},'{res[5]}','{res[6]}',{res[7]},{res[8]},{res[9]},'{res[10]}');"
         cursor.execute(sql)
         con.commit()
-        print('Reserva creada')
+        print('===Reserva Creada Correctamente===')
         
     
