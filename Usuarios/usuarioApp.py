@@ -2,7 +2,7 @@ from Tipo_usuario import *
 from usuarios import *
 from datetime import *
 
-with sqlite3.connect("C:\Villamil\kratosbase.db") as conect:
+with sqlite3.connect("kratosbase.db") as conect:
     cursor=conect.cursor()
     
 

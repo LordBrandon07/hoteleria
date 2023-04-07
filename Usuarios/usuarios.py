@@ -1,6 +1,6 @@
 import sqlite3
 
-with sqlite3.connect("C:\Villamil\kratosbase.db") as conect:
+with sqlite3.connect("kratosbase.db") as conect:
     cursor=conect.cursor()
 
 
