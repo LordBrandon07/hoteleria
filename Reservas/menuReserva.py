@@ -6,7 +6,7 @@ def menuReservas():
     1- Crear Reserva
     2- Modificar Reserva
     3- Eliminar Reserva
-    4- Buscar Reserva
+    4- Buscar Reservas
     5- Crear Informe de Reservas en txt
     0- Regresar
     ''')
@@ -24,7 +24,7 @@ def menuReservas():
         if opcion == 3:
             borrar_reserva()
         if opcion == 4:
-            buscar_reserva()
+            buscar_reservas()
         if opcion == 5:
             consultar_reservas()
         if opcion == 0:

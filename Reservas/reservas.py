@@ -1,7 +1,7 @@
 import sqlite3
 from estadoReserva import *
 
-with sqlite3.connect('C://Users//gveje//Desktop//DIEGO//ADSO//SQLite//kratosbase.db')as con:
+with sqlite3.connect('kratosbase.db')as con:
     cursor=con.cursor()
 
 class Reservas:

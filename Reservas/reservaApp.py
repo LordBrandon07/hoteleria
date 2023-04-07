@@ -3,7 +3,7 @@ from datetime import *
 import sqlite3
 #from habitaciones import *
 
-with sqlite3.connect('C://Users//gveje//Desktop//DIEGO//ADSO//SQLite//kratosbase.db')as con:
+with sqlite3.connect('kratosbase.db')as con:
     cursor=con.cursor()
 
 def capturar_reserva():
@@ -51,8 +51,8 @@ def capturar_reserva():
             print("===Formato de fecha incorrecto: debe ser dd-mm-yyyy===")
     cant_dias=(fin-ini).days
     valor=cant_dias*10000
-    id="R"
     while True:
+        id="R"
         try:
             num=input("Digite codigo de reserva:\n")
             if len(num)!=4 or not num.isdigit():
@@ -66,20 +66,46 @@ def capturar_reserva():
         except:
             print("===Formato de codigo incorrecto: Debe ser de 4 digitos===")
 
-def buscar_reserva():
-    id=input('Digite ID de la reserva: ')
-    sql=f"SELECT * FROM reserva WHERE res_id='{id}'"
+def buscar_reservas():
+    print('''\n====Busqueda====
+    1- ID reserva
+    2- ID usuario
+    3- Fecha de inicio
+    4- Estado de reserva
+    ''')
+    opcion=int(input('Seleccione una opcion de busqueda: '))
+    if opcion==1:
+        campo="res_id"
+    elif opcion==2:
+        campo="usu_id"
+    elif opcion==3:
+        campo="res_fe_inicio"
+    elif opcion==4:
+        campo="est_id"
+    else:
+        print("===Opcion no valida===")
+        buscar_reservas()
+    dato=input('Digite el valor buscado: ').upper()
+    sql=f"SELECT * FROM reserva WHERE {campo}='{dato}'"
     consulta=cursor.execute(sql).fetchall()
-    for i in consulta:
+    if len(consulta)==0:
+        print("\n===No existe la reserva===")
+        buscar_reservas()
+    else:
         print("===========================================================================================================================================")
         print("res_id |res_fecha   |res_cant_hab |res_cant_adultos |res_cant_niños |res_fe_inicio |res_fe_final |res_cant_dias |res_valor |usu_id |est_id")
-        print(f"{i[0]}  |{i[1]}  |{i[2]}            |{i[3]}                |{i[4]}              |{i[5]}    |{i[6]}   |{i[7]}             |{i[8]}    |{i[9]}     |{i[10]}")
+        for i in consulta:
+            print(f"{i[0]}  |{i[1]}  |{i[2]}            |{i[3]}                |{i[4]}              |{i[5]}    |{i[6]}   |{i[7]}             |{i[8]}    |{i[9]}     |{i[10]}")
         print("===========================================================================================================================================")
-        return id
         
 def modificar_reserva():
     consultar_reservas()
-    id=input('***Digite ID de la Reserva a Modificar: ')
+    while True:
+        id=input('***Digite ID de la Reserva a Modificar: ').upper()
+        if len(id)==5 and id.startswith("R"):
+            break
+        else:
+            print("===ID incorrecta, favor verificar===")
     campo=input('Digite el campo que desea modificar: ')
     dato=input('Digite el nuevo valor del campo: ')
     sentencia = f"UPDATE reserva SET {campo} = '{dato}' WHERE res_id='{id}'"
@@ -89,7 +115,12 @@ def modificar_reserva():
     
 def borrar_reserva():
     consultar_reservas()
-    id=input('***Digite ID de la Reserva a Eliminar: ')
+    while True:
+        id=input('***Digite ID de la Reserva a Eliminar: ').upper()
+        if len(id)==5 and id.startswith("R"):
+            break
+        else:
+            print("===ID incorrecta, favor verificar===")
     sql=f"DELETE FROM reserva WHERE res_id == '{id}'"
     cursor.execute(sql)
     con.commit()
