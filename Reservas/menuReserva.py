@@ -10,7 +10,13 @@ def menuReservas():
     5- Crear Informe de Reservas en txt
     0- Regresar
     ''')
-        opcion=int(input('Seleccione una opcion: '))
+        try:
+            opcion=int(input('Seleccione una opcion: '))
+            if opcion<0 or opcion>5:
+                assert()
+        except:
+            print("\n====OPCION INVALIDA====")
+            menuReservas()
         if opcion == 1:
             capturar_reserva()
         if opcion == 2:
@@ -23,5 +29,3 @@ def menuReservas():
             consultar_reservas()
         if opcion == 0:
             exit()
-
-menuReservas()
