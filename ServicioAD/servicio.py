@@ -1,6 +1,6 @@
 import sqlite3
 
-with sqlite3.connect("/home/sergio/kratos/kratosbase.db")as sal:
+with sqlite3.connect("kratosbase.db")as sal:
     cursor = sal.cursor()
 
 class Adicional:
