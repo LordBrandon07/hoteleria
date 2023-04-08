@@ -29,5 +29,5 @@ def menuadicional():
             selcadicional()
 
         if seleccion == 0:
-            exit()
+            break
     

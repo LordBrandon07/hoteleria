@@ -28,4 +28,4 @@ def menuReservas():
         if opcion == 5:
             consultar_reservas()
         if opcion == 0:
-            exit()
+            break

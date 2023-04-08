@@ -26,5 +26,5 @@ def MenuUsuarios():
     if sele == 4:
         Modificarusuario()
     if sele == 0:
-        exit()
+        break
     

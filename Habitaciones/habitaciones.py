@@ -1,6 +1,6 @@
 import sqlite3
 
-with sqlite3.connect('D:\\DonBrandon\\Tarea\\Adso\\visual\\hoteleria\\kratosbase.db')as pepe:
+with sqlite3.connect('kratosbase.db')as pepe:
     micursor=pepe.cursor()
 
 class Habitaciones:
