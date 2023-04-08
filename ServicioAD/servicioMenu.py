@@ -31,5 +31,3 @@ def menuadicional():
         if seleccion == 0:
             exit()
     
-print(seleccion)
-    
