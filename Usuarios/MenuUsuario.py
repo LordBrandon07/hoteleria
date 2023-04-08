@@ -28,4 +28,3 @@ def MenuUsuarios():
     if sele == 0:
         exit()
     
-MenuUsuarios()
